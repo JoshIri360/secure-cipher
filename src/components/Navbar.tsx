@@ -23,7 +23,9 @@ export default function Navbar() {
   return (
     <div className="flex items-center">
       <NavigationMenu className="flex justify-between content-between max-w-none">
-        <img draggable={false} width={70} src={Logo} alt="Logo" />
+        <a href="#">
+          <img src={Logo} alt="logo" className="w-16 h-16" />
+        </a>
         <NavigationMenuList>
           <NavigationMenuItem className="flex items-center gap-4">
             {isLoggedin ? (

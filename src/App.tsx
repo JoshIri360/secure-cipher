@@ -56,14 +56,14 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
         {isLoggedin ? (
           <>
-            <Route path="/upload" element={<Upload userData={user}/>} />
+            <Route path="/upload" element={<Upload userData={user} />} />
             <Route path="/download" element={<Download userData={user} />} />
           </>
         ) : (
           <>
+            <Route path="/" element={<Home />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
           </>

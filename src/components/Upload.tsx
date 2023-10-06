@@ -109,7 +109,7 @@ export default function Upload({ userData }: { userData: userData }) {
 
     await axios
       .post(
-        `http://54.167.193.158:5000/api/upload?user=${userData.email}`,
+        `http://localhost:5000/api/upload?user=${userData.email}`,
         formData,
         {
           headers: {
@@ -155,7 +155,7 @@ export default function Upload({ userData }: { userData: userData }) {
 
     setIsGenerating(true);
     let { publicKey, privateKey } = await axios
-      .post("http://54.167.193.158:5000/api/getKeys", {
+      .post("http://localhost:5000/api/getKeys", {
         randomKey: randomKey,
       })
       .then((response: any) => {

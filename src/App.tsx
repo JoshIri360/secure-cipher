@@ -9,7 +9,6 @@ import { Signup } from "./components/Signup";
 import { Login } from "./components/Login";
 import Download from "./components/Download";
 import { auth } from "../firebase-config";
-import Logout from "./components/Logout";
 
 function App() {
   const [isLoggedin, setIsLoggedIn] = React.useState(false);

@@ -41,7 +41,6 @@ interface userData {
 export default function Download({ userData }: { userData: userData }) {
   const [filesData, setFilesData] = React.useState<Array<any>>([]);
   const [loading, setLoading] = React.useState(true);
-  const [privateKey, setPrivateKey] = React.useState("");
   const [filePassword, setFilePassword] = React.useState("");
   const [privateKeyFile, setPrivateKeyFile] = React.useState<File | null>(null);
   const fileRef = React.useRef<HTMLInputElement>(null);
@@ -51,7 +50,7 @@ export default function Download({ userData }: { userData: userData }) {
       setLoading(true);
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/files?user=${userData.email}`
+          `http://54.167.193.158:5000/api/files?user=${userData.email}`
         );
         setFilesData(response.data.files);
       } catch (err) {
@@ -123,7 +122,7 @@ export default function Download({ userData }: { userData: userData }) {
 
     axios
       .post(
-        `http://localhost:5000/api/download?user=${userData.email}`,
+        `http://54.167.193.158:5000/api/download?user=${userData.email}`,
         formData,
         {
           headers: {

@@ -11,13 +11,11 @@ import { auth } from "../../firebase-config";
 
 export default function Navbar() {
   const [isLoggedin, setIsLoggedIn] = React.useState(false);
-  const [isLoading, setIsLoading] = React.useState(true);
   const navigate = useNavigate();
 
   React.useEffect(() => {
     auth.onAuthStateChanged(function (user) {
       setIsLoggedIn(!!user);
-      setIsLoading(false);
     });
   }, []);
 

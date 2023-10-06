@@ -109,7 +109,7 @@ export default function Upload({ userData }: { userData: userData }) {
 
     await axios
       .post(
-        `http://localhost:5000/api/upload?user=${userData.email}`,
+        `http://54.167.193.158:5000/api/upload?user=${userData.email}`,
         formData,
         {
           headers: {
@@ -155,7 +155,7 @@ export default function Upload({ userData }: { userData: userData }) {
 
     setIsGenerating(true);
     let { publicKey, privateKey } = await axios
-      .post("http://localhost:5000/api/getKeys", {
+      .post("http://54.167.193.158:5000/api/getKeys", {
         randomKey: randomKey,
       })
       .then((response: any) => {
@@ -166,34 +166,6 @@ export default function Upload({ userData }: { userData: userData }) {
     setPrivateKey(privateKey);
 
     setIsGenerating(false);
-  };
-
-  const downloadPublicKey: any = (event: React.SyntheticEvent) => {
-    event.preventDefault();
-    // Download text in public key as txt file
-    if (!file) {
-      setError("Please select a file");
-      return;
-    }
-    const element = document.createElement("a");
-    if (!publicKey) {
-      setError("Please generate public and private keys");
-      return;
-    }
-    setError("");
-    const publicKeyFile = new Blob([publicKey], { type: "text/plain" });
-    element.href = URL.createObjectURL(publicKeyFile);
-    element.download = `${file?.name} publicKey.txt`;
-    document.body.appendChild(element); // Required for this to work in FireFox
-    element.click();
-
-    // Download random key as txt file
-    const element2 = document.createElement("a");
-    const randomKeyFile = new Blob([randomKey], { type: "text/plain" });
-    element2.href = URL.createObjectURL(randomKeyFile);
-    element2.download = `${file?.name} randomKey.txt`;
-    document.body.appendChild(element2); // Required for this to work in FireFox
-    element2.click();
   };
 
   const downloadPrivateKey: any = (event: React.SyntheticEvent) => {
@@ -211,7 +183,7 @@ export default function Upload({ userData }: { userData: userData }) {
     setError("");
     const privateKeyFile = new Blob([privateKey], { type: "text/plain" });
     element.href = URL.createObjectURL(privateKeyFile);
-    element.download = `${file?.name} privateKey.txt`;
+    element.download = `${file?.name.split(".")[0]} Private Key.txt`;
     document.body.appendChild(element); // Required for this to work in FireFox
     element.click();
 
@@ -219,7 +191,7 @@ export default function Upload({ userData }: { userData: userData }) {
     const element2 = document.createElement("a");
     const randomKeyFile = new Blob([randomKey], { type: "text/plain" });
     element2.href = URL.createObjectURL(randomKeyFile);
-    element2.download = `${file?.name} randomKey.txt`;
+    element2.download = `${file?.name.split(".")[0]} Password.txt`;
     document.body.appendChild(element2); // Required for this to work in FireFox
     element2.click();
   };

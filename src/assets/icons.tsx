@@ -32,7 +32,7 @@ export const Icons = {
   download: Download,
   bulb: Lightbulb,
   delete: Trash,
-  questionMark: (props: LucideProps) => (
+  questionMark: () => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"

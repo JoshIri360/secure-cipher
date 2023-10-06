@@ -8,6 +8,7 @@ import React from "react";
 import { Button } from "../../@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../firebase-config";
+import Logo from "../assets/images/icon1.svg";
 
 export default function Navbar() {
   const [isLoggedin, setIsLoggedIn] = React.useState(false);
@@ -22,11 +23,7 @@ export default function Navbar() {
   return (
     <div className="flex items-center">
       <NavigationMenu className="flex justify-between content-between max-w-none">
-        <img
-          draggable={false}
-          src="https://via.placeholder.com/50"
-          alt="Logo"
-        />
+        <img draggable={false} width={70} src={Logo} alt="Logo" />
         <NavigationMenuList>
           <NavigationMenuItem className="flex items-center gap-4">
             {isLoggedin ? (

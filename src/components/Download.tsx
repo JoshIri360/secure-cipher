@@ -51,7 +51,7 @@ export default function Download({ userData }: { userData: userData }) {
       setLoading(true);
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/files?user=${userData.email}`
+          `http://54.167.193.158:5000/api/files?user=${userData.email}`
         );
         setFilesData(response.data.files);
       } catch (err) {
@@ -125,7 +125,7 @@ export default function Download({ userData }: { userData: userData }) {
 
     axios
       .post(
-        `http://localhost:5000/api/download?user=${userData.email}`,
+        `http://54.167.193.158:5000/api/download?user=${userData.email}`,
         formData,
         {
           headers: {
@@ -156,7 +156,6 @@ export default function Download({ userData }: { userData: userData }) {
       })
       .finally(() => {
         setdownLoading(false);
-        
       });
   }
 

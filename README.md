@@ -1,6 +1,6 @@
 # Secure Cypher
 
-Secure Cypher is a web application that leverages hybrid cryptography to provide secure file encryption and decryption. This project was created as a personal endeavor to enhance my knowledge in cryptography and backend development. It incorporates React, TypeScript, Vite, and Shadcn for beautifully designed components.
+Secure Cypher is a web application that leverages hybrid cryptography, utilizing RSA and AES encryption methods to provide secure file encryption and decryption. This project was created as a personal endeavor to enhance my knowledge in cryptography and backend development. It incorporates React, TypeScript, Vite, and Shadcn for beautifully designed components.
 
 ## Features
 

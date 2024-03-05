@@ -1,5 +1,7 @@
 # Secure Cypher
 
+**IMPORTANT NOTICE: This application was a project to enhance my knowledge in cryptography and backend development. Unfortunately, my AWS quota was exceeded and now the API calls aren't working. The application is currently not functional.**
+
 Secure Cypher is a web application that leverages hybrid cryptography, utilizing RSA and AES encryption methods to provide secure file encryption and decryption. This project was created as a personal endeavor to enhance my knowledge in cryptography and backend development. It incorporates React, TypeScript, Vite, and Shadcn for beautifully designed components.
 
 ## Features
@@ -37,10 +39,6 @@ To get started with Secure Cypher, follow these steps:
 - Vite
 - Shadcn (Beautifully designed components)
 - AWS (for hosting)
-
-## Security
-
-Secure Cypher takes security seriously by performing client-side encryption and ensuring that decryption keys are never transmitted to the server. However, please be aware of the limitations due to the HTTP server hosting the API.
 
 ## Contributing
 

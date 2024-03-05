@@ -22,7 +22,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "../../@/components/ui/alert-dialog";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
 import doc from "../assets/images/doc.png";
 import fileImage from "../assets/images/file.png";
@@ -117,7 +117,7 @@ export default function Upload({ userData }: { userData: userData }) {
           },
         }
       )
-      .then((response: any) => {
+      .then((response: AxiosResponse) => {
         if (response.data.message === "File uploaded successfully") {
           setSuccess("File uploaded successfully");
         }
@@ -154,11 +154,14 @@ export default function Upload({ userData }: { userData: userData }) {
     }
 
     setIsGenerating(true);
-    let { publicKey, privateKey } = await axios
-      .post("http://54.167.193.158:5000/api/getKeys", {
-        randomKey: randomKey,
-      })
-      .then((response: any) => {
+    const { publicKey, privateKey } = await axios
+      .post<{ publicKey: string; privateKey: string }>(
+        "http://54.167.193.158:5000/api/getKeys",
+        {
+          randomKey: randomKey,
+        }
+      )
+      .then((response) => {
         return response.data;
       });
 
@@ -168,7 +171,7 @@ export default function Upload({ userData }: { userData: userData }) {
     setIsGenerating(false);
   };
 
-  const downloadPrivateKey: any = (event: React.SyntheticEvent) => {
+  const downloadPrivateKey = (event: React.SyntheticEvent) => {
     event.preventDefault();
     // Download text in private key as txt file
     if (!file) {
@@ -212,7 +215,8 @@ export default function Upload({ userData }: { userData: userData }) {
                 onDragOver={handleDragOver}
                 onDrop={handleDrop}
                 onClick={() => fileRef.current?.click()}
-                className="rounded-lg dotted-border cursor-pointer text-sm text-secondary p-16 select-none">
+                className="rounded-lg dotted-border cursor-pointer text-sm text-secondary p-16 select-none"
+              >
                 <input
                   type="file"
                   hidden
@@ -246,7 +250,8 @@ export default function Upload({ userData }: { userData: userData }) {
                       file.size > 20000000
                         ? "text-destructive"
                         : "text-muted-foreground"
-                    }`}>
+                    }`}
+                  >
                     {formatFileSize(file.size)}
                   </span>
                 </div>
@@ -258,7 +263,8 @@ export default function Upload({ userData }: { userData: userData }) {
                         size={"icon"}
                         onClick={() => {
                           setFile(null);
-                        }}>
+                        }}
+                      >
                         <Icons.delete className="h-4 w-4" />
                       </Button>
                     </TooltipTrigger>
@@ -290,7 +296,8 @@ export default function Upload({ userData }: { userData: userData }) {
                         variant={"secondary"}
                         size={"icon"}
                         className="grid place-items-center"
-                        onClick={generatePublicandPrivateKeys}>
+                        onClick={generatePublicandPrivateKeys}
+                      >
                         {isGenerating && (
                           <Icons.spinner className="h-4 w-4 animate-spin" />
                         )}
@@ -308,7 +315,8 @@ export default function Upload({ userData }: { userData: userData }) {
                       <Button
                         variant={"secondary"}
                         size={"icon"}
-                        onClick={generateKey}>
+                        onClick={generateKey}
+                      >
                         <Icons.refresh className="h-4 w-4" />
                       </Button>
                     </TooltipTrigger>
@@ -348,7 +356,8 @@ export default function Upload({ userData }: { userData: userData }) {
                       <Button
                         variant={"secondary"}
                         size={"icon"}
-                        onClick={downloadPrivateKey}>
+                        onClick={downloadPrivateKey}
+                      >
                         <Icons.download className="h-4 w-4" />
                       </Button>
                     </TooltipTrigger>
@@ -390,7 +399,8 @@ export default function Upload({ userData }: { userData: userData }) {
                   className="w-full"
                   onClick={(e) => {
                     checkNulls(e);
-                  }}>
+                  }}
+                >
                   {isLoading && (
                     <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
                   )}
